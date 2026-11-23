@@ -1,14 +1,21 @@
 // pages/submit.js
-import { Box, Heading } from '@chakra-ui/react'
-import SubmitForm from '../components/SubmitForm'
+import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import Layout from "../components/Layout";
+import SubmitForm from "../components/SubmitForm";
 
-export default function SubmitApparel() {
+export default function SubmitPage() {
   return (
-    <Box py={10} px={6}>
-      <Heading as="h2" size="xl" textAlign="center" color="brand.900" mb={10}>
-        Submit Your Apparel
-      </Heading>
-      <SubmitForm />
-    </Box>
-  )
+    <Layout>
+      <Container maxW="900px" py={{ base: 10, md: 14 }}>
+        <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em">
+          Sell an item
+        </Heading>
+        <Text color="gray.600" mt={1} mb={8} maxW="60ch">
+          Describe the garment honestly and we will grade it before it goes live.
+          Listings with measurements and a clear condition note sell fastest.
+        </Text>
+        <SubmitForm />
+      </Container>
+    </Layout>
+  );
 }
