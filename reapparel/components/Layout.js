@@ -29,28 +29,34 @@ export default function Layout({ children }) {
         <Container maxW="1200px">
           <Flex h="64px" align="center" justify="space-between">
             <Link href="/" aria-label="Reapparel home">
-              <HStack spacing={2}>
+              {/* The supplied logo is a lockup of dark ink, so both the icon and
+                  the wordmark sit on a light chip to stay legible in dark mode. */}
+              <HStack
+                className="logo-chip"
+                spacing={2.5}
+                px={2.5}
+                py={1.5}
+                borderRadius="xl"
+                align="center"
+              >
                 <Box
-                  className="logo-chip"
-                  display="grid"
-                  placeItems="center"
+                  as="img"
+                  src="/logo-icon.png"
+                  alt=""
                   w="38px"
                   h="38px"
-                  borderRadius="lg"
-                  overflow="hidden"
-                >
-                  <Box
-                    as="img"
-                    src="/logo-icon.png"
-                    alt=""
-                    w="34px"
-                    h="34px"
-                    objectFit="contain"
-                  />
-                </Box>
-                <Text fontWeight="700" fontSize="lg" color="heading" letterSpacing="-0.02em">
-                  Reapparel
-                </Text>
+                  objectFit="contain"
+                  flexShrink={0}
+                />
+                <Box
+                  as="img"
+                  src="/logo-wordmark.png"
+                  alt="Reapparel"
+                  h="20px"
+                  w="auto"
+                  display={{ base: "none", sm: "block" }}
+                  objectFit="contain"
+                />
               </HStack>
             </Link>
 
@@ -101,22 +107,40 @@ export default function Layout({ children }) {
       <Box as="main">{children}</Box>
 
       <Box as="footer" borderTopWidth="1px" borderColor="border" bg="surface" mt={20}>
-        <Container maxW="1200px" py={10}>
+        <Container maxW="1200px" py={12}>
           <Flex
             direction={{ base: "column", md: "row" }}
             justify="space-between"
-            align={{ base: "flex-start", md: "center" }}
-            gap={4}
+            align={{ base: "flex-start", md: "flex-start" }}
+            gap={{ base: 8, md: 12 }}
           >
-            <Box>
-              <Text fontWeight="700" color="heading">
-                Reapparel
-              </Text>
-              <Text fontSize="sm" color="mutedText">
-                Reimagine. Renew. Rewear.
-              </Text>
+            {/* The full lockup — icon, wordmark and tagline — is the brand
+                statement, so the footer gives it real size. The artwork is
+                dark ink, so it sits on a light panel in dark mode. */}
+            <Box
+              className="logo-panel"
+              maxW={{ base: "260px", md: "340px" }}
+              w="100%"
+              p={{ base: 3, md: 4 }}
+              borderRadius="xl"
+            >
+              <Box
+                as="img"
+                src="/logo-lockup.png"
+                alt="Reapparel — Reimagine. Renew. Rewear."
+                w="100%"
+                h="auto"
+                display="block"
+              />
             </Box>
-            <HStack spacing={6} fontSize="sm" color="mutedText">
+
+            <HStack
+              spacing={{ base: 4, md: 8 }}
+              fontSize="sm"
+              color="mutedText"
+              align="flex-start"
+              flexWrap="wrap"
+            >
               <Link href="/faq">How it works</Link>
               <Link href="/size-guide">Size guide</Link>
               <Link href="/wishlist">Saved</Link>
@@ -124,9 +148,12 @@ export default function Layout({ children }) {
               <Link href="/submit">Sell</Link>
             </HStack>
           </Flex>
-          <Text mt={6} fontSize="xs" color="faintText">
-            Every listing is graded, measured and photographed before it goes live.
-          </Text>
+
+          <Box borderTopWidth="1px" borderColor="border" mt={10} pt={6}>
+            <Text fontSize="xs" color="faintText">
+              Every listing is graded, measured and photographed before it goes live.
+            </Text>
+          </Box>
         </Container>
       </Box>
     </Box>
