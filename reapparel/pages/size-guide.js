@@ -28,10 +28,10 @@ export default function SizeGuide() {
   return (
     <Layout>
       <Container maxW="820px" py={{ base: 10, md: 14 }}>
-        <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em">
+        <Heading as="h1" size="lg" color="heading" letterSpacing="-0.02em">
           Size guide
         </Heading>
-        <Text color="gray.600" mt={1} mb={8}>
+        <Text color="mutedText" mt={1} mb={8}>
           Every listing carries its own measurements. Use this table as a starting
           point, then check the item page — the tape measure always wins.
         </Text>
@@ -43,9 +43,9 @@ export default function SizeGuide() {
           quick chest check.
         </Alert>
 
-        <Box bg="white" borderWidth="1px" borderColor="brand.100" borderRadius="xl" overflow="hidden">
+        <Box bg="surface" borderWidth="1px" borderColor="border" borderRadius="xl" overflow="hidden">
           <Table>
-            <Thead bg="brand.50">
+            <Thead bg="surfaceAlt">
               <Tr>
                 <Th>Size</Th>
                 <Th isNumeric>Chest (cm)</Th>
@@ -56,7 +56,7 @@ export default function SizeGuide() {
             <Tbody>
               {ROWS.map((r) => (
                 <Tr key={r.size}>
-                  <Td fontWeight="600" color="brand.800">
+                  <Td fontWeight="600" color="brandChipText">
                     {r.size}
                   </Td>
                   <Td isNumeric>{r.chest}</Td>
@@ -68,7 +68,7 @@ export default function SizeGuide() {
           </Table>
         </Box>
 
-        <Text fontSize="sm" color="gray.500" mt={6}>
+        <Text fontSize="sm" color="faintText" mt={6}>
           Between sizes? Size up for outerwear and knitwear, down for jersey.
         </Text>
       </Container>

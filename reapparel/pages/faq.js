@@ -43,10 +43,10 @@ export default function FaqPage() {
   return (
     <Layout>
       <Container maxW="800px" py={{ base: 10, md: 14 }}>
-        <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em">
+        <Heading as="h1" size="lg" color="heading" letterSpacing="-0.02em">
           How Reapparel works
         </Heading>
-        <Text color="gray.600" mt={1} mb={8}>
+        <Text color="mutedText" mt={1} mb={8}>
           The rules we hold ourselves to.
         </Text>
 
@@ -55,19 +55,19 @@ export default function FaqPage() {
             <AccordionItem
               key={item.q}
               borderWidth="1px"
-              borderColor="brand.100"
+              borderColor="border"
               borderRadius="lg"
-              bg="white"
+              bg="surface"
               mb={3}
               px={2}
             >
               <AccordionButton py={4}>
-                <Box flex="1" textAlign="left" fontWeight="600" color="brand.900">
+                <Box flex="1" textAlign="left" fontWeight="600" color="heading">
                   {item.q}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4} color="gray.600" lineHeight="1.75">
+              <AccordionPanel pb={4} color="mutedText" lineHeight="1.75">
                 {item.a}
               </AccordionPanel>
             </AccordionItem>

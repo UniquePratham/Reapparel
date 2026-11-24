@@ -62,9 +62,9 @@ export default function FeedbackForm() {
       onSubmit={submit}
       maxW="600px"
       mx="auto"
-      bg="white"
+      bg="surface"
       borderWidth="1px"
-      borderColor="brand.100"
+      borderColor="border"
       borderRadius="xl"
       p={{ base: 6, md: 8 }}
     >

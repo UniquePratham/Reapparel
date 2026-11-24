@@ -16,29 +16,39 @@ export default function Layout({ children }) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box minH="100vh" bg="brand.50">
+    <Box minH="100vh" bg="surfaceAlt">
       <Box
         as="header"
         position="sticky"
         top={0}
         zIndex={20}
-        bg="white"
+        bg="surface"
         borderBottomWidth="1px"
-        borderColor="brand.100"
+        borderColor="border"
       >
         <Container maxW="1200px">
           <Flex h="64px" align="center" justify="space-between">
             <Link href="/" aria-label="Reapparel home">
               <HStack spacing={2}>
                 <Box
-                  as="img"
-                  src="/logo-icon.png"
-                  alt=""
-                  w="34px"
-                  h="34px"
-                  objectFit="contain"
-                />
-                <Text fontWeight="700" fontSize="lg" color="brand.900" letterSpacing="-0.02em">
+                  className="logo-chip"
+                  display="grid"
+                  placeItems="center"
+                  w="38px"
+                  h="38px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                >
+                  <Box
+                    as="img"
+                    src="/logo-icon.png"
+                    alt=""
+                    w="34px"
+                    h="34px"
+                    objectFit="contain"
+                  />
+                </Box>
+                <Text fontWeight="700" fontSize="lg" color="heading" letterSpacing="-0.02em">
                   Reapparel
                 </Text>
               </HStack>
@@ -53,9 +63,10 @@ export default function Layout({ children }) {
                       variant="ghost"
                       size="sm"
                       fontWeight={active ? "700" : "500"}
-                      color={active ? "brand.700" : "gray.600"}
-                      bg={active ? "brand.50" : "transparent"}
-                      _hover={{ bg: "brand.50" }}
+                      color={active ? "navActiveText" : "navText"}
+                      bg={active ? "navActiveBg" : "transparent"}
+                      _hover={{ bg: "hoverBg", color: "navActiveText" }}
+                      aria-current={active ? "page" : undefined}
                     >
                       {item.label}
                     </Button>
@@ -66,9 +77,14 @@ export default function Layout({ children }) {
 
             <HStack spacing={2}>
               <IconButton
-                aria-label="Toggle colour mode"
+                aria-label={
+                  colorMode === "dark" ? "Switch to light mode" : "Switch to dark mode"
+                }
+                title={colorMode === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                 size="sm"
                 variant="ghost"
+                color="navText"
+                _hover={{ bg: "hoverBg", color: "navActiveText" }}
                 onClick={toggleColorMode}
                 icon={<Text fontSize="md">{colorMode === "dark" ? "☀" : "☾"}</Text>}
               />
@@ -84,7 +100,7 @@ export default function Layout({ children }) {
 
       <Box as="main">{children}</Box>
 
-      <Box as="footer" borderTopWidth="1px" borderColor="brand.100" bg="white" mt={20}>
+      <Box as="footer" borderTopWidth="1px" borderColor="border" bg="surface" mt={20}>
         <Container maxW="1200px" py={10}>
           <Flex
             direction={{ base: "column", md: "row" }}
@@ -93,14 +109,14 @@ export default function Layout({ children }) {
             gap={4}
           >
             <Box>
-              <Text fontWeight="700" color="brand.900">
+              <Text fontWeight="700" color="heading">
                 Reapparel
               </Text>
-              <Text fontSize="sm" color="gray.600">
+              <Text fontSize="sm" color="mutedText">
                 Reimagine. Renew. Rewear.
               </Text>
             </Box>
-            <HStack spacing={6} fontSize="sm" color="gray.600">
+            <HStack spacing={6} fontSize="sm" color="mutedText">
               <Link href="/faq">How it works</Link>
               <Link href="/size-guide">Size guide</Link>
               <Link href="/wishlist">Saved</Link>
@@ -108,7 +124,7 @@ export default function Layout({ children }) {
               <Link href="/submit">Sell</Link>
             </HStack>
           </Flex>
-          <Text mt={6} fontSize="xs" color="gray.500">
+          <Text mt={6} fontSize="xs" color="faintText">
             Every listing is graded, measured and photographed before it goes live.
           </Text>
         </Container>

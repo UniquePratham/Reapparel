@@ -26,10 +26,10 @@ export default function WishlistPage() {
   return (
     <Layout>
       <Container maxW="1200px" py={{ base: 10, md: 14 }}>
-        <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em">
+        <Heading as="h1" size="lg" color="heading" letterSpacing="-0.02em">
           Saved items
         </Heading>
-        <Text color="gray.600" mt={1} mb={8}>
+        <Text color="mutedText" mt={1} mb={8}>
           {ready ? `${items.length} item${items.length === 1 ? "" : "s"} saved on this device` : "Loading…"}
         </Text>
 
@@ -37,17 +37,17 @@ export default function WishlistPage() {
 
         {ready && items.length === 0 ? (
           <Box
-            bg="white"
+            bg="surface"
             borderWidth="1px"
-            borderColor="brand.100"
+            borderColor="border"
             borderRadius="xl"
             py={20}
             textAlign="center"
           >
-            <Text fontWeight="600" color="brand.900">
+            <Text fontWeight="600" color="heading">
               Nothing saved yet
             </Text>
-            <Text fontSize="sm" color="gray.600" mt={1} mb={4}>
+            <Text fontSize="sm" color="mutedText" mt={1} mb={4}>
               Tap the heart on any item to keep it here.
             </Text>
             <Link href="/apparel">

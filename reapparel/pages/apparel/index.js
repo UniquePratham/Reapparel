@@ -79,19 +79,19 @@ export default function Shop() {
   return (
     <Layout>
       <Container maxW="1200px" py={{ base: 10, md: 14 }}>
-        <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em">
+        <Heading as="h1" size="lg" color="heading" letterSpacing="-0.02em">
           Shop
         </Heading>
-        <Text color="gray.600" mt={1} mb={8}>
+        <Text color="mutedText" mt={1} mb={8}>
           {results.length} of {CATALOG.length} items
         </Text>
 
         <ImpactCalculator />
 
         <Box
-          bg="white"
+          bg="surface"
           borderWidth="1px"
-          borderColor="brand.100"
+          borderColor="border"
           borderRadius="xl"
           p={4}
           mb={8}
@@ -169,17 +169,17 @@ export default function Shop() {
 
         {results.length === 0 ? (
           <Box
-            bg="white"
+            bg="surface"
             borderWidth="1px"
-            borderColor="brand.100"
+            borderColor="border"
             borderRadius="xl"
             py={20}
             textAlign="center"
           >
-            <Text fontWeight="600" color="brand.900">
+            <Text fontWeight="600" color="heading">
               Nothing matches those filters
             </Text>
-            <Text fontSize="sm" color="gray.600" mt={1} mb={4}>
+            <Text fontSize="sm" color="mutedText" mt={1} mb={4}>
               Try widening the size or condition.
             </Text>
             <Button size="sm" colorScheme="brand" onClick={reset}>

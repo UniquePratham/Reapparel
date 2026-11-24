@@ -44,14 +44,14 @@ export default function Home() {
 
   return (
     <Layout>
-      <Box bg="white" borderBottomWidth="1px" borderColor="brand.100">
+      <Box bg="surface" borderBottomWidth="1px" borderColor="border">
         <Container maxW="1200px" py={{ base: 14, md: 24 }}>
           <Grid templateColumns={{ base: "1fr", lg: "1.1fr 0.9fr" }} gap={12} align="center">
             <VStack align="flex-start" spacing={6}>
               <HStack
                 spacing={2}
-                bg="brand.50"
-                color="brand.700"
+                bg="surfaceAlt"
+                color="navActiveText"
                 px={3}
                 py={1}
                 borderRadius="full"
@@ -67,12 +67,12 @@ export default function Home() {
                 fontSize={{ base: "3xl", md: "5xl" }}
                 lineHeight="1.1"
                 letterSpacing="-0.03em"
-                color="brand.900"
+                color="heading"
               >
                 Good clothes deserve a second life.
               </Heading>
 
-              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" maxW="52ch">
+              <Text fontSize={{ base: "md", md: "lg" }} color="mutedText" maxW="52ch">
                 Reapparel is a marketplace for pre-owned clothing that is graded,
                 measured and honestly described. Buy less, choose better, keep it
                 in circulation.
@@ -93,26 +93,26 @@ export default function Home() {
 
               <SimpleGrid columns={3} spacing={8} pt={6} w="100%">
                 <Stat>
-                  <StatNumber fontSize="2xl" color="brand.700">
+                  <StatNumber fontSize="2xl" color="navActiveText">
                     {CATALOG.length}
                   </StatNumber>
-                  <StatLabel fontSize="xs" color="gray.500">
+                  <StatLabel fontSize="xs" color="faintText">
                     Items listed
                   </StatLabel>
                 </Stat>
                 <Stat>
-                  <StatNumber fontSize="2xl" color="brand.700">
+                  <StatNumber fontSize="2xl" color="navActiveText">
                     {Math.round(totalCo2)} kg
                   </StatNumber>
-                  <StatLabel fontSize="xs" color="gray.500">
+                  <StatLabel fontSize="xs" color="faintText">
                     CO₂ avoided
                   </StatLabel>
                 </Stat>
                 <Stat>
-                  <StatNumber fontSize="2xl" color="brand.700">
+                  <StatNumber fontSize="2xl" color="navActiveText">
                     {Math.round(totalWater / 1000)}k L
                   </StatNumber>
-                  <StatLabel fontSize="xs" color="gray.500">
+                  <StatLabel fontSize="xs" color="faintText">
                     Water saved
                   </StatLabel>
                 </Stat>
@@ -123,16 +123,17 @@ export default function Home() {
               borderRadius="2xl"
               overflow="hidden"
               borderWidth="1px"
-              borderColor="brand.100"
-              bg="brand.50"
+              borderColor="border"
+              bg="surfaceAlt"
             >
               <Grid templateColumns="1fr 1fr" gap={2} p={2}>
                 {featured.map((item) => (
-                  <Box key={item.id} borderRadius="xl" overflow="hidden" bg="white">
+                  <Box key={item.id} borderRadius="xl" overflow="hidden" bg="surface">
                     <img
                       src={`/items/${item.id}.png`}
                       alt={`${item.brand} ${item.title}`}
-                      style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#f7faf7" }}
+                      className="product-shot"
+                      style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain" }}
                     />
                   </Box>
                 ))}
@@ -145,10 +146,10 @@ export default function Home() {
       <Container maxW="1200px" py={{ base: 14, md: 20 }}>
         <Flex justify="space-between" align="flex-end" mb={8}>
           <Box>
-            <Heading as="h2" size="lg" color="brand.900" letterSpacing="-0.02em">
+            <Heading as="h2" size="lg" color="heading" letterSpacing="-0.02em">
               Recently listed
             </Heading>
-            <Text color="gray.600" mt={1}>
+            <Text color="mutedText" mt={1}>
               Graded, measured and ready to ship.
             </Text>
           </Box>
@@ -169,12 +170,12 @@ export default function Home() {
         </Grid>
       </Container>
 
-      <Box bg="white" borderYWidth="1px" borderColor="brand.100">
+      <Box bg="surface" borderYWidth="1px" borderColor="border">
         <Container maxW="1200px" py={{ base: 14, md: 20 }}>
-          <Heading as="h2" size="lg" color="brand.900" mb={2} letterSpacing="-0.02em">
+          <Heading as="h2" size="lg" color="heading" mb={2} letterSpacing="-0.02em">
             How Reapparel works
           </Heading>
-          <Text color="gray.600" mb={10}>
+          <Text color="mutedText" mb={10}>
             Three steps, no guesswork.
           </Text>
 
@@ -184,10 +185,10 @@ export default function Home() {
                 <Text fontSize="sm" fontWeight="700" color="brand.500" mb={2}>
                   {step.n}
                 </Text>
-                <Text fontWeight="700" color="brand.900" mb={1}>
+                <Text fontWeight="700" color="heading" mb={1}>
                   {step.title}
                 </Text>
-                <Text fontSize="sm" color="gray.600" lineHeight="1.7">
+                <Text fontSize="sm" color="mutedText" lineHeight="1.7">
                   {step.body}
                 </Text>
               </Box>

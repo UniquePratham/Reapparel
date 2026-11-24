@@ -49,12 +49,12 @@ export default function ItemPage({ item, related }) {
   return (
     <Layout>
       <Container maxW="1200px" py={{ base: 8, md: 12 }}>
-        <HStack fontSize="sm" color="gray.500" mb={6} spacing={2}>
+        <HStack fontSize="sm" color="faintText" mb={6} spacing={2}>
           <Link href="/apparel">Shop</Link>
           <Text>/</Text>
           <Text>{categoryLabel(item.category)}</Text>
           <Text>/</Text>
-          <Text color="gray.700">{item.title}</Text>
+          <Text color="bodyText">{item.title}</Text>
         </HStack>
 
         <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 8, lg: 14 }}>
@@ -62,31 +62,32 @@ export default function ItemPage({ item, related }) {
             borderRadius="2xl"
             overflow="hidden"
             borderWidth="1px"
-            borderColor="brand.100"
-            bg="white"
+            borderColor="border"
+            bg="surface"
           >
             <img
               src={`/items/${item.id}.png`}
               alt={`${item.brand} ${item.title}`}
-              style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#f7faf7" }}
+              className="product-shot"
+              style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain" }}
             />
           </Box>
 
           <VStack align="stretch" spacing={5}>
             <Box>
-              <Text fontSize="sm" color="gray.500" textTransform="uppercase" letterSpacing="0.08em">
+              <Text fontSize="sm" color="faintText" textTransform="uppercase" letterSpacing="0.08em">
                 {item.brand}
               </Text>
-              <Heading as="h1" size="lg" color="brand.900" letterSpacing="-0.02em" mt={1}>
+              <Heading as="h1" size="lg" color="heading" letterSpacing="-0.02em" mt={1}>
                 {item.title}
               </Heading>
             </Box>
 
             <HStack spacing={3}>
-              <Text fontSize="2xl" fontWeight="700" color="brand.700">
+              <Text fontSize="2xl" fontWeight="700" color="navActiveText">
                 ${item.price}
               </Text>
-              <Text color="gray.400" textDecoration="line-through">
+              <Text color="faintText" textDecoration="line-through">
                 ${item.originalPrice}
               </Text>
               <Badge colorScheme="green" borderRadius="full" px={2}>
@@ -95,34 +96,34 @@ export default function ItemPage({ item, related }) {
             </HStack>
 
             <HStack spacing={2} flexWrap="wrap">
-              <Badge bg="brand.50" color="brand.800" borderRadius="full" px={3} py={1}>
+              <Badge bg="surfaceAlt" color="brandChipText" borderRadius="full" px={3} py={1}>
                 {conditionGrade(item.condition)} · {conditionLabel(item.condition)}
               </Badge>
-              <Badge bg="gray.100" color="gray.700" borderRadius="full" px={3} py={1}>
+              <Badge bg="chipBg" color="bodyText" borderRadius="full" px={3} py={1}>
                 Size {item.size}
               </Badge>
-              <Badge bg="gray.100" color="gray.700" borderRadius="full" px={3} py={1}>
+              <Badge bg="chipBg" color="bodyText" borderRadius="full" px={3} py={1}>
                 {item.colour}
               </Badge>
             </HStack>
 
-            <Text color="gray.700" lineHeight="1.75">
+            <Text color="bodyText" lineHeight="1.75">
               {item.description}
             </Text>
 
             <Divider />
 
             <Box>
-              <Text fontWeight="700" color="brand.900" mb={3}>
+              <Text fontWeight="700" color="heading" mb={3}>
                 Measurements
               </Text>
               <SimpleGrid columns={2} spacing={3}>
                 {measurements.map(([key, value]) => (
                   <HStack key={key} justify="space-between" fontSize="sm">
-                    <Text color="gray.600" textTransform="capitalize">
+                    <Text color="mutedText" textTransform="capitalize">
                       {key}
                     </Text>
-                    <Text fontWeight="600" color="gray.800">
+                    <Text fontWeight="600" color="heading">
                       {value} cm
                     </Text>
                   </HStack>
@@ -133,18 +134,18 @@ export default function ItemPage({ item, related }) {
             <Divider />
 
             <Box>
-              <Text fontWeight="700" color="brand.900" mb={2}>
+              <Text fontWeight="700" color="heading" mb={2}>
                 Impact
               </Text>
-              <HStack spacing={6} fontSize="sm" color="gray.600">
+              <HStack spacing={6} fontSize="sm" color="mutedText">
                 <Text>
-                  <Text as="span" fontWeight="700" color="brand.700">
+                  <Text as="span" fontWeight="700" color="navActiveText">
                     {item.co2Saved} kg
                   </Text>{" "}
                   CO₂ avoided
                 </Text>
                 <Text>
-                  <Text as="span" fontWeight="700" color="brand.700">
+                  <Text as="span" fontWeight="700" color="navActiveText">
                     {item.waterSaved.toLocaleString()} L
                   </Text>{" "}
                   water saved
@@ -154,10 +155,10 @@ export default function ItemPage({ item, related }) {
 
             <Divider />
 
-            <HStack justify="space-between" fontSize="sm" color="gray.600">
+            <HStack justify="space-between" fontSize="sm" color="mutedText">
               <Text>
                 Sold by{" "}
-                <Text as="span" fontWeight="600" color="gray.800">
+                <Text as="span" fontWeight="600" color="heading">
                   {item.seller}
                 </Text>{" "}
                 · {item.city}
@@ -172,12 +173,12 @@ export default function ItemPage({ item, related }) {
               <Button size="lg" variant="outline" colorScheme="brand">
                 Message seller
               </Button>
-              <Box borderWidth="1px" borderColor="brand.200" borderRadius="lg" px={2}>
+              <Box borderWidth="1px" borderColor="borderStrong" borderRadius="lg" px={2}>
                 <WishlistButton itemId={item.id} size="lg" />
               </Box>
             </HStack>
 
-            <Text fontSize="xs" color="gray.500">
+            <Text fontSize="xs" color="faintText">
               Fibre: {item.fibre}. Returns accepted within 14 days if the item does
               not match its listed condition.
             </Text>
@@ -186,7 +187,7 @@ export default function ItemPage({ item, related }) {
 
         {related.length > 0 && (
           <Box mt={20}>
-            <Heading as="h2" size="md" color="brand.900" mb={6}>
+            <Heading as="h2" size="md" color="heading" mb={6}>
               You might also like
             </Heading>
             <Grid

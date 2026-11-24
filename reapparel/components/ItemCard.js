@@ -21,16 +21,16 @@ export default function ItemCard({ item, index = 0 }) {
     >
       <Link href={`/apparel/${item.id}`} style={{ display: "block", height: "100%" }}>
         <Box
-          bg="white"
+          bg="surface"
           borderWidth="1px"
-          borderColor="brand.100"
+          borderColor="border"
           borderRadius="xl"
           overflow="hidden"
           h="100%"
           transition="box-shadow .2s ease, border-color .2s ease"
           _hover={{ boxShadow: "xl", borderColor: "brand.300" }}
         >
-          <Box position="relative" bg="brand.50" p={4} role="group">
+          <Box position="relative" bg="surfaceAlt" p={4} role="group">
             <Image
               src={`/items/${item.id}.png`}
               alt={`${item.brand} ${item.title}`}
@@ -44,8 +44,8 @@ export default function ItemCard({ item, index = 0 }) {
               position="absolute"
               top={3}
               left={3}
-              bg="white"
-              color="brand.800"
+              bg="surface"
+              color="brandChipText"
               borderRadius="full"
               px={2}
               py={1}
@@ -69,28 +69,28 @@ export default function ItemCard({ item, index = 0 }) {
             >
               −{discount}%
             </Badge>
-            <Box position="absolute" bottom={2} right={2} bg="white" borderRadius="full" boxShadow="sm">
+            <Box position="absolute" bottom={2} right={2} bg="surface" borderRadius="full" boxShadow="sm">
               <WishlistButton itemId={item.id} />
             </Box>
           </Box>
 
           <VStack align="stretch" spacing={1} p={4}>
-            <Text fontSize="xs" color="gray.500" textTransform="uppercase" letterSpacing="0.06em">
+            <Text fontSize="xs" color="faintText" textTransform="uppercase" letterSpacing="0.06em">
               {item.brand}
             </Text>
-            <Text fontWeight="600" color="brand.900" noOfLines={1}>
+            <Text fontWeight="600" color="heading" noOfLines={1}>
               {item.title}
             </Text>
             <HStack justify="space-between" pt={1}>
               <HStack spacing={2}>
-                <Text fontWeight="700" color="brand.700">
+                <Text fontWeight="700" color="navActiveText">
                   ${item.price}
                 </Text>
-                <Text fontSize="sm" color="gray.400" textDecoration="line-through">
+                <Text fontSize="sm" color="faintText" textDecoration="line-through">
                   ${item.originalPrice}
                 </Text>
               </HStack>
-              <Text fontSize="xs" color="gray.500">
+              <Text fontSize="xs" color="faintText">
                 {item.size}
               </Text>
             </HStack>

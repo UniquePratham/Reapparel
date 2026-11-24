@@ -10,6 +10,21 @@
   --brand: #2e9e5b;
   --brand-dark: #1c663a;
   --accent: #f5b400;
+  --skeleton-from: #e6f2ea;
+  --skeleton-to: #f4fbf6;
+}
+
+/* Chakra writes data-theme on <html>; mirror the palette so the plain-CSS
+   parts (body background, skeleton shimmer) follow the toggle too. */
+[data-theme="dark"] {
+  --background: #0b1a12;
+  --foreground: #e6f4ec;
+  --brand: #4fb878;
+  --brand-dark: #7bcb97;
+  --accent: #ffd45c;
+  --skeleton-from: #16301f;
+  --skeleton-to: #1d3b28;
+  color-scheme: dark;
 }
 
 html,
@@ -20,6 +35,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 * {
@@ -36,6 +52,23 @@ img {
   outline: 3px solid rgba(46, 158, 91, 0.45);
   outline-offset: 2px;
   border-radius: 6px;
+}
+
+/* Product cut-outs are transparent PNGs of real garments. They sit on the
+   surface colour, so the tile follows the theme instead of a hardcoded white. */
+.product-shot {
+  background: transparent;
+}
+
+/* The logo is dark ink on a transparent background, so it disappears on the
+   dark header. A light chip behind it keeps it legible in both modes. */
+.logo-chip {
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .logo-chip {
+  background: #f2f7f3;
 }
 
 /* --------------------------------------------------------------------------
@@ -75,7 +108,12 @@ img {
 }
 
 .skeleton {
-  background: linear-gradient(90deg, #e6f2ea 0%, #f4fbf6 50%, #e6f2ea 100%);
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-from) 0%,
+    var(--skeleton-to) 50%,
+    var(--skeleton-from) 100%
+  );
   background-size: 800px 100%;
   animation: shimmer 1.4s linear infinite;
 }

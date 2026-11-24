@@ -32,6 +32,33 @@ const theme = extendTheme({
       900: "#523C00",
     },
   },
+  // Semantic tokens resolve per colour mode, so components never hardcode a
+  // light-only value. Every surface, border and text colour in the app reads
+  // from these instead of "white" / "gray.600".
+  semanticTokens: {
+    colors: {
+      pageBg: { default: "brand.50", _dark: "#0B1A12" },
+      surface: { default: "white", _dark: "#12261B" },
+      surfaceAlt: { default: "brand.50", _dark: "#183324" },
+      surfaceSunken: { default: "gray.50", _dark: "#0E2016" },
+      border: { default: "brand.100", _dark: "#234A34" },
+      borderStrong: { default: "brand.200", _dark: "#2E5C42" },
+      heading: { default: "brand.900", _dark: "brand.100" },
+      bodyText: { default: "gray.700", _dark: "gray.200" },
+      mutedText: { default: "gray.600", _dark: "gray.400" },
+      faintText: { default: "gray.500", _dark: "gray.500" },
+      chipBg: { default: "gray.100", _dark: "#1E3D2B" },
+      chipText: { default: "gray.700", _dark: "gray.200" },
+      brandChipBg: { default: "brand.50", _dark: "#1B3D29" },
+      brandChipText: { default: "brand.800", _dark: "brand.200" },
+      navActiveBg: { default: "brand.50", _dark: "#1B3D29" },
+      navActiveText: { default: "brand.700", _dark: "brand.200" },
+      navText: { default: "gray.600", _dark: "gray.300" },
+      hoverBg: { default: "brand.50", _dark: "#1B3D29" },
+      skeletonFrom: { default: "#e6f2ea", _dark: "#16301F" },
+      skeletonTo: { default: "#f4fbf6", _dark: "#1D3B28" },
+    },
+  },
   fonts: {
     heading: `'Poppins', system-ui, sans-serif`,
     body: `'Poppins', system-ui, sans-serif`,
@@ -39,8 +66,8 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "brand.50",
-        color: "gray.800",
+        bg: "pageBg",
+        color: "bodyText",
       },
       a: {
         _hover: { textDecoration: "none" },
@@ -63,9 +90,13 @@ const theme = extendTheme({
           transition: "all .18s ease",
         },
         outline: {
-          borderColor: "brand.300",
-          color: "brand.700",
-          _hover: { bg: "brand.50", borderColor: "brand.500" },
+          borderColor: "borderStrong",
+          color: "brandChipText",
+          _hover: { bg: "hoverBg", borderColor: "brand.500" },
+        },
+        ghost: {
+          color: "navText",
+          _hover: { bg: "hoverBg", color: "navActiveText" },
         },
       },
     },
@@ -75,8 +106,30 @@ const theme = extendTheme({
     Select: {
       defaultProps: { focusBorderColor: "brand.400" },
     },
+    Textarea: {
+      defaultProps: { focusBorderColor: "brand.400" },
+    },
     Badge: {
       baseStyle: { borderRadius: "full", textTransform: "none", fontWeight: 600 },
+    },
+    Accordion: {
+      baseStyle: {
+        container: { borderColor: "border" },
+        button: {
+          _hover: { bg: "hoverBg" },
+          _focus: { boxShadow: "0 0 0 3px rgba(46,158,91,.35)" },
+        },
+        panel: { color: "mutedText" },
+      },
+    },
+    Table: {
+      baseStyle: {
+        th: { borderColor: "border" },
+        td: { borderColor: "border" },
+      },
+    },
+    Divider: {
+      baseStyle: { borderColor: "border" },
     },
   },
 });
