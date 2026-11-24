@@ -130,9 +130,9 @@ export default function Home() {
                 {featured.map((item) => (
                   <Box key={item.id} borderRadius="xl" overflow="hidden" bg="white">
                     <img
-                      src={`/items/${item.id}.svg`}
+                      src={`/items/${item.id}.png`}
                       alt={`${item.brand} ${item.title}`}
-                      style={{ width: "100%", display: "block", aspectRatio: "4 / 5", objectFit: "cover" }}
+                      style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#f7faf7" }}
                     />
                   </Box>
                 ))}
@@ -163,8 +163,8 @@ export default function Home() {
           templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
           gap={5}
         >
-          {featured.map((item) => (
-            <ItemCard key={item.id} item={item} />
+          {featured.map((item, index) => (
+            <ItemCard key={item.id} item={item} index={index} />
           ))}
         </Grid>
       </Container>

@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../../components/Layout";
 import ItemCard from "../../components/ItemCard";
+import WishlistButton from "../../components/WishlistButton";
 import {
   CATALOG,
   categoryLabel,
@@ -65,9 +66,9 @@ export default function ItemPage({ item, related }) {
             bg="white"
           >
             <img
-              src={`/items/${item.id}.svg`}
+              src={`/items/${item.id}.png`}
               alt={`${item.brand} ${item.title}`}
-              style={{ width: "100%", display: "block", aspectRatio: "4 / 5", objectFit: "cover" }}
+              style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#f7faf7" }}
             />
           </Box>
 
@@ -171,6 +172,9 @@ export default function ItemPage({ item, related }) {
               <Button size="lg" variant="outline" colorScheme="brand">
                 Message seller
               </Button>
+              <Box borderWidth="1px" borderColor="brand.200" borderRadius="lg" px={2}>
+                <WishlistButton itemId={item.id} size="lg" />
+              </Box>
             </HStack>
 
             <Text fontSize="xs" color="gray.500">

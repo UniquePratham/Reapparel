@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --background: #f1f8e9;
-  --foreground: #1b5e20;
+  --background: #eaf7ee;
+  --foreground: #0e351e;
+  --brand: #2e9e5b;
+  --brand-dark: #1c663a;
+  --accent: #f5b400;
 }
 
 html,
@@ -16,6 +19,7 @@ body {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   background: var(--background);
   color: var(--foreground);
+  scroll-behavior: smooth;
 }
 
 * {
@@ -25,6 +29,67 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Focus ring that matches the brand, visible for keyboard users only. */
+:focus-visible {
+  outline: 3px solid rgba(46, 158, 91, 0.45);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Motion
+   -------------------------------------------------------------------------- */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(46, 158, 91, 0.35); }
+  70% { box-shadow: 0 0 0 14px rgba(46, 158, 91, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 158, 91, 0); }
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pulse-ring {
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e6f2ea 0%, #f4fbf6 50%, #e6f2ea 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* Respect the user's motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer utilities {

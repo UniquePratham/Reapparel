@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../../components/Layout";
 import ItemCard from "../../components/ItemCard";
+import ImpactCalculator from "../../components/ImpactCalculator";
 import { CATALOG, CATEGORIES, CONDITIONS, SIZES } from "../../data/catalog";
 
 const SORTS = [
@@ -84,6 +85,8 @@ export default function Shop() {
         <Text color="gray.600" mt={1} mb={8}>
           {results.length} of {CATALOG.length} items
         </Text>
+
+        <ImpactCalculator />
 
         <Box
           bg="white"
@@ -188,8 +191,8 @@ export default function Shop() {
             templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" }}
             gap={5}
           >
-            {results.map((item) => (
-              <ItemCard key={item.id} item={item} />
+            {results.map((item, index) => (
+              <ItemCard key={item.id} item={item} index={index} />
             ))}
           </Grid>
         )}

@@ -6,6 +6,7 @@ import { Box, Container, Flex, HStack, Text, Button, IconButton, useColorMode } 
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/apparel", label: "Shop" },
+  { href: "/wishlist", label: "Saved" },
   { href: "/submit", label: "Sell" },
   { href: "/faq", label: "How it works" },
 ];
@@ -30,18 +31,13 @@ export default function Layout({ children }) {
             <Link href="/" aria-label="Reapparel home">
               <HStack spacing={2}>
                 <Box
-                  w="28px"
-                  h="28px"
-                  borderRadius="8px"
-                  bg="brand.500"
-                  display="grid"
-                  placeItems="center"
-                  color="white"
-                  fontWeight="700"
-                  fontSize="sm"
-                >
-                  R
-                </Box>
+                  as="img"
+                  src="/logo-icon.png"
+                  alt=""
+                  w="34px"
+                  h="34px"
+                  objectFit="contain"
+                />
                 <Text fontWeight="700" fontSize="lg" color="brand.900" letterSpacing="-0.02em">
                   Reapparel
                 </Text>
@@ -106,6 +102,8 @@ export default function Layout({ children }) {
             </Box>
             <HStack spacing={6} fontSize="sm" color="gray.600">
               <Link href="/faq">How it works</Link>
+              <Link href="/size-guide">Size guide</Link>
+              <Link href="/wishlist">Saved</Link>
               <Link href="/feedback">Feedback</Link>
               <Link href="/submit">Sell</Link>
             </HStack>
